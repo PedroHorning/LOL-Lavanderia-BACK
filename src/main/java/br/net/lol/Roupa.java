@@ -10,44 +10,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Roupa {
     @Id
     @Column(name = "cod_roupa")
-    private Integer codigo;
-
-    private String prazo;
-    private String descricao;
+    private Integer id;
+    @Column(name = "prazo")
+    private String deadline;
+    @Column(name = "descricao")
+    private String name;
     @Column(name = "valor_unitario")
-    private Double valorUnitario;
+    private Double price;
 
     // getters e setters
 
-    public Integer getCodigo() {
-        return codigo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getPrazo() {
-        return prazo;
+    public String getDeadline() {
+        return deadline;
     }
 
-    public void setPrazo(String prazo) {
-        this.prazo = prazo;
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getName() {
+        return name;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getValorUnitario() {
-        return valorUnitario;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setValorUnitario(Double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
