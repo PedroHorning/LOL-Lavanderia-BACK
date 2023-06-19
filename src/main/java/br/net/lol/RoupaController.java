@@ -28,12 +28,12 @@ public class RoupaController {
         return roupaRepository.findAll();
     }
     
-    @PostMapping("/roupas/add")
+    @PostMapping("/roupas")
     public Roupa addRoupa(@RequestBody Roupa roupa) {
         return roupaRepository.save(roupa);
     }
 
-    @PutMapping("/roupas/update/{id}")
+    @PutMapping("/roupas}")
     public Roupa updateRoupa(@PathVariable Integer id, @RequestBody Roupa roupa) {
         Optional<Roupa> existingRoupa = roupaRepository.findById(id);
         if (existingRoupa.isPresent()) {
@@ -47,7 +47,7 @@ public class RoupaController {
         }
     }
 
-    @DeleteMapping("/roupas/delete/{id}")
+    @DeleteMapping("/roupas")
     public String deleteRoupa(@PathVariable Integer id) {
         Optional<Roupa> existingRoupa = roupaRepository.findById(id);
         if (existingRoupa.isPresent()) {
@@ -56,10 +56,5 @@ public class RoupaController {
         } else {
             throw new RuntimeException("Roupa not found with id: " + id);
         }
-    }
-
-    @GetMapping("/error")
-    public String handleError() {
-        return "Error occurred. Please try again.";
     }
 }
