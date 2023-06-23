@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api")
 public class Roupa {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_roupa")
     private Integer id;
     @Column(name = "prazo")
-    private String deadline;
+    private Integer deadline;
     @Column(name = "descricao")
     private String name;
     @Column(name = "valor_unitario")
@@ -20,7 +21,7 @@ public class Roupa {
 
     // getters e setters
 
-    public Integer getId() {
+	public Integer getId() {
         return id;
     }
 
@@ -28,11 +29,11 @@ public class Roupa {
         this.id = id;
     }
 
-    public String getDeadline() {
+    public Integer getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
+    public void setDeadline(Integer deadline) {
         this.deadline = deadline;
     }
 
