@@ -2,7 +2,6 @@ package br.net.lol;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
