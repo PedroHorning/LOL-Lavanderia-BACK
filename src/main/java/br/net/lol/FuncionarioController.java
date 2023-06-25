@@ -83,6 +83,7 @@ public class FuncionarioController {
         Usuario usuario = new Usuario();
         usuario.setName(funcionario.getName());
         usuario.setEmail(funcionario.getEmail());
+        usuario.setProfile("funcionário");
         usuario.setPassword(senhaHash);
         
 		usuarioRepository.save(usuario);

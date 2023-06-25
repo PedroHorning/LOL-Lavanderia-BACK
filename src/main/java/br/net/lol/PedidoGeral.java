@@ -20,7 +20,7 @@ public class PedidoGeral {
     private String status;
     
     @Column(name = "usuario_id")
-    private Integer id_usuario;
+    private Integer idUsuario;
     
     @Column(name = "data")
     private LocalDate data;
@@ -31,7 +31,7 @@ public class PedidoGeral {
     @Column(name = "deadline")
     private Integer deadline;
     
-    @OneToMany(mappedBy = "pedido_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pedidoid", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<RoupasPedidos> roupas;
     
     public List<RoupasPedidos> getRoupas() {
@@ -58,12 +58,12 @@ public class PedidoGeral {
         this.status = status;
     }
     
-    public Integer getUsuario_Id() {
-        return id_usuario;
+    public Integer getidUsuario() {
+        return idUsuario;
     }
 
-    public void setUsuario_Id(Integer id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setidUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public LocalDate getData() {

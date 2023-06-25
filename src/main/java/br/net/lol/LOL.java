@@ -8,6 +8,7 @@ public class LOL {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LOL.class, args);
+	
 	}
 
 }

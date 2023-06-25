@@ -15,8 +15,9 @@ public class RoupasPedidos {
     @Column(name = "id")
     private Integer roupas_pedido_id;
 	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pedidogeral_id")
-    private Integer pedido_id;
+    private Integer pedidoid;
     
     @Column(name = "roupa_id")
     @JsonProperty("id")
@@ -87,12 +88,12 @@ public class RoupasPedidos {
         this.roupas_pedido_id = roupas_pedido_id;
     }
 
-    public Integer getPedido_id() {
-        return pedido_id;
+    public Integer getPedidoid() {
+        return pedidoid;
     }
 
-    public void setPedido_id(Integer pedido_id) {
-        this.pedido_id = pedido_id;
+    public void setPedidoid(Integer pedidoid) {
+        this.pedidoid = pedidoid;
     }
 
     @JsonProperty("id")

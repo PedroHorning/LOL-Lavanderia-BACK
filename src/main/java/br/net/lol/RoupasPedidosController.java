@@ -8,7 +8,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pedidos-roupas")
-@CrossOrigin(origins = "*")
 public class RoupasPedidosController {
 
     private final RoupasPedidoRepository roupasPedidoRepository;
@@ -19,18 +18,21 @@ public class RoupasPedidosController {
         this.roupasPedidoRepository = roupasPedidoRepository;
         this.roupasRepository = roupasRepository;
     }
-
+    
+    @CrossOrigin(origins = "*")
     @GetMapping
     public List<RoupasPedidos> getAllPedidosRoupas() {
         return roupasPedidoRepository.findAll();
     }
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
     public RoupasPedidos getPedidoRoupasById(@PathVariable("id") Integer id) {
         return roupasPedidoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Pedido não encontrado com o ID: " + id));
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping
     public RoupasPedidos createPedidoRoupas(@RequestBody RoupasPedidos pedidoRoupas) {
         Integer roupaId = pedidoRoupas.getRoupa_id();
@@ -51,6 +53,7 @@ public class RoupasPedidosController {
         return roupasPedidoRepository.save(pedidoRoupas);
     }
 
+    @CrossOrigin(origins = "*")
     @PutMapping("/{id}")
     public RoupasPedidos updatePedidoRoupas(@PathVariable("id") Integer id, @RequestBody RoupasPedidos pedidoRoupas) {
         if (!roupasPedidoRepository.existsById(id)) {

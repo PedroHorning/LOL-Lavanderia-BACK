@@ -4,16 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pedidos")
 public class PedidoGeralController {
 
     private final PedidoGeralRepository pedidoGeralRepository;
+    private final RoupasPedidoRepository roupasPedidoRepository;
 
     @Autowired
-    public PedidoGeralController(PedidoGeralRepository pedidoGeralRepository) {
+    public PedidoGeralController(PedidoGeralRepository pedidoGeralRepository, RoupasPedidoRepository roupasPedidoRepository) {
         this.pedidoGeralRepository = pedidoGeralRepository;
+        this.roupasPedidoRepository = roupasPedidoRepository;
     }
     
     @CrossOrigin(origins= "*")
@@ -22,11 +25,31 @@ public class PedidoGeralController {
         return pedidoGeralRepository.findAll();
     }
     
-    @CrossOrigin(origins= "*")
+    @CrossOrigin(origins = "*")
+    @GetMapping("/cliente/{idUsuario}")
+    public List<PedidoGeral> listarPedidosPorUsuario(@PathVariable("idUsuario") Integer idUsuario) {
+        return pedidoGeralRepository.findByIdUsuario(idUsuario);
+    }
+    
+    @CrossOrigin(origins = "*")
     @GetMapping("/{id}")
-    public PedidoGeral obterPedidoPorId(@PathVariable Integer id) {
-        return pedidoGeralRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pedido não encontrado com o ID: " + id));
+    public Optional<PedidoGeral> listarPedidoPorId(@PathVariable("id") Integer id) {
+        return pedidoGeralRepository.findById(id);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @PostMapping("/")
+    public PedidoGeral adicionarPedidoGeral(@RequestBody PedidoGeral pedidoGeral) { 	
+        PedidoGeral novoPedidoGeral = pedidoGeralRepository.save(pedidoGeral);
+        
+        RoupasPedidos roupasPedidos = new RoupasPedidos();
+        roupasPedidos.setRoupa_id(roupasPedidos.getRoupa_id());
+        roupasPedidos.setQuantidade(roupasPedidos.getQuantidade());
+        roupasPedidos.setValor_total(roupasPedidos.getValor_total());
+
+        roupasPedidoRepository.save(roupasPedidos);
+
+        return novoPedidoGeral;
     }
 
     @CrossOrigin(origins= "*")
