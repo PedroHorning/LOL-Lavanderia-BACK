@@ -12,14 +12,15 @@ public class Roupa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_roupa")
     private Integer id;
+    
     @Column(name = "prazo")
     private Integer deadline;
+    
     @Column(name = "descricao")
     private String name;
+    
     @Column(name = "valor_unitario")
     private Double price;
-
-    // getters e setters
 
 	public Integer getId() {
         return id;

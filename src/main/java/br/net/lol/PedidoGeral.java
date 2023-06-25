@@ -1,14 +1,15 @@
 package br.net.lol;
 
 import javax.persistence.*;
+
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
 @Table(name = "pedidos_geral")
 @RequestMapping("/api")
-
 public class PedidoGeral {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,17 @@ public class PedidoGeral {
     
     @Column(name = "deadline")
     private Integer deadline;
+    
+    @OneToMany(mappedBy = "pedido_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<RoupasPedidos> roupas;
+    
+    public List<RoupasPedidos> getRoupas() {
+        return roupas;
+    }
+
+    public void setRoupas(List<RoupasPedidos> roupas) {
+        this.roupas = roupas;
+    }
     
     public Integer getId() {
         return id;
@@ -76,5 +88,5 @@ public class PedidoGeral {
 
     public void setDeadline(Integer deadline) {
         this.deadline = deadline;
-    }
+    } 
 }
