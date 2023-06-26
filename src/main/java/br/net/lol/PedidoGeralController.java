@@ -77,4 +77,6 @@ public class PedidoGeralController {
 
         pedidoGeralRepository.delete(pedido);
     }
+    
+    
 }

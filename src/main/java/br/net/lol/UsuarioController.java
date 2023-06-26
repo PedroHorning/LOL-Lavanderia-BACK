@@ -30,6 +30,18 @@ public class UsuarioController {
         return usuarioRepository.findById(id).orElse(null);
     }
     
+    @CrossOrigin(origins = "*")
+    @GetMapping("/login/")
+    public Usuario getUsuarioByEmail(@RequestParam String email, @RequestParam String password) {
+        return usuarioRepository.findByEmail(email);
+    }
+    
+    @CrossOrigin(origins = "*")
+    @GetMapping("/cliente/")
+    public List<Usuario> getUsuariosByProfile() {
+        return usuarioRepository.findByProfile("cliente");
+    }
+    
     private String gerarSenhaAleatoria() {
         SecureRandom random = new SecureRandom();
         int senhaNumerica = random.nextInt(10000); 
@@ -110,4 +122,6 @@ public class UsuarioController {
     public void deleteUsuario(@PathVariable Integer id) {
         usuarioRepository.deleteById(id);
     }
+    
+    
 }

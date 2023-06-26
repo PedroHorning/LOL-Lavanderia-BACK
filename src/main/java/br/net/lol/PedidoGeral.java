@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "pedidos_geral")
 @RequestMapping("/api")
@@ -20,6 +22,7 @@ public class PedidoGeral {
     private String status;
     
     @Column(name = "usuario_id")
+    @JsonProperty("usuarioId")
     private Integer idUsuario;
     
     @Column(name = "data")
@@ -58,10 +61,12 @@ public class PedidoGeral {
         this.status = status;
     }
     
+    @JsonProperty("usuarioId")
     public Integer getidUsuario() {
         return idUsuario;
     }
 
+    @JsonProperty("usuarioId")
     public void setidUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
